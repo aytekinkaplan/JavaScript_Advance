@@ -43,3 +43,50 @@ Here's a table comparing JavaScript `Map` and `Object`:
 | Performance (Adding/Removing Elements) | Performs better for frequent addition/removal of elements.       | Does not perform as well for frequent addition/removal of elements. |
 
 This table highlights the key differences between `Map` and `Object` in JavaScript.
+
+Here’s a table summarizing the methods of the `Map` object along with examples:
+
+| Method              | Description                                                                                               | Example                                                                  |
+| ------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `new Map()`         | Creates a new empty map.                                                                                  | `const myMap = new Map();`                                               |
+| `new Map(iterable)` | Creates a new map with elements from an iterable object.                                                  | `const myMap = new Map([['key1', 'value1'], ['key2', 'value2']]);`       |
+| `map.size`          | Returns the number of elements in the map.                                                                | `myMap.size`                                                             |
+| `clear()`           | Removes all elements from the map.                                                                        | `myMap.clear();`                                                         |
+| `delete(key)`       | Removes the element with the specified key. Returns `true` if the element was removed, `false` otherwise. | `myMap.delete('key1');`                                                  |
+| `get(key)`          | Returns the value associated with the specified key, or `undefined` if the key does not exist.            | `myMap.get('key1');`                                                     |
+| `has(key)`          | Returns `true` if a value associated with the key exists, otherwise `false`.                              | `myMap.has('key1');`                                                     |
+| `set(key, value)`   | Sets the value for the specified key. Returns the map object itself, allowing method chaining.            | `myMap.set('key3', 'value3');`                                           |
+| `map.keys()`        | Returns an iterable of the map’s keys.                                                                    | `for (let key of myMap.keys()) { console.log(key); }`                    |
+| `map.values()`      | Returns an iterable of the map’s values.                                                                  | `for (let value of myMap.values()) { console.log(value); }`              |
+| `map.entries()`     | Returns an iterable of `[key, value]` pairs. Used by default in `for..of` loops.                          | `for (let [key, value] of myMap.entries()) { console.log(key, value); }` |
+| `map.forEach()`     | Executes a provided function once for each `[key, value]` pair. Similar to array’s `forEach` method.      | `myMap.forEach((value, key) => { console.log(key, value); });`           |
+
+**Examples:**
+
+1. **Creating a Map and Adding Elements:**
+
+   ```javascript
+   const myMap = new Map();
+   myMap.set("name", "Alice");
+   myMap.set("age", 30);
+   ```
+
+2. **Using `map.size`, `map.get`, and `map.has`:**
+
+   ```javascript
+   console.log(myMap.size); // 2
+   console.log(myMap.get("name")); // 'Alice'
+   console.log(myMap.has("age")); // true
+   ```
+
+3. **Iterating Over a Map:**
+
+   ```javascript
+   myMap.forEach((value, key) => {
+     console.log(`${key}: ${value}`);
+   });
+
+   for (let [key, value] of myMap.entries()) {
+     console.log(`${key}: ${value}`);
+   }
+   ```
