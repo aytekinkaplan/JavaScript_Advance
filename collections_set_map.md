@@ -91,7 +91,7 @@ Here’s a table summarizing the methods of the `Map` object along with examples
    }
    ```
 
-   Sure! Here’s a more detailed and high-quality example, with explanations:
+Here’s a more detailed and high-quality example, with explanations:
 
 ### Example: Student Grades Map
 
@@ -185,7 +185,7 @@ In this code, we create a `Map` with four entries. Each entry consists of a stud
 
 In this example, we’ve demonstrated how to create a `Map`, add data, and use various `Map` methods to interact with it.
 
-Certainly! Here is the explanation for each line of code, with comments directly above each code line:
+Here is the explanation for each line of code, with comments directly above each code line:
 
 ```javascript
 // Create a new Map instance
@@ -826,8 +826,6 @@ Providing 50 examples would be quite extensive for a single interaction. Instead
 These examples demonstrate
 
 various ways `Map` and `Set` can be used in JavaScript, from simple key-value storage and unique value collections to more advanced operations like filtering, counting, and managing complex data structures.
-
-Certainly! Here’s the explanation for each line of code, with comments directly above each line and additional information on the purpose of each loop:
 
 ```javascript
 // Create a new Map instance to store fruit names and their colors
