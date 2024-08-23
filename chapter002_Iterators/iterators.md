@@ -984,3 +984,76 @@ console.log(squaredNumbers2);
 - **Readability**: The second approach (`squaredNumbers2`) separates the concerns of array creation and transformation, which might be clearer in some contexts, but involves an extra step.
 
 This professional version highlights best practices and provides a clear comparison between the two approaches.
+
+Here’s a refined and professional version of the `range` function example, demonstrating how to generate a sequence of numbers with a specified start, stop, and step:
+
+```javascript
+/**
+ * Generates an array of numbers in a specified range.
+ *
+ * @param {number} start - The starting value of the range (inclusive).
+ * @param {number} stop - The ending value of the range (exclusive).
+ * @param {number} step - The step value between each number in the range.
+ * @returns {number[]} An array containing the numbers from start to stop, incremented by step.
+ */
+const range = (start, stop, step) =>
+  Array.from(
+    { length: Math.ceil((stop - start) / step) }, // Determine the length of the array
+    (_, index) => start + index * step // Compute each value based on start, step, and index
+  );
+
+// Example usage
+console.log("Range from 4 to 10 with step 1:");
+console.log(range(4, 10, 1));
+// Output: [4, 5, 6, 7, 8, 9]
+
+console.log("Range from 1 to 10 with step 2:");
+console.log(range(1, 10, 2));
+// Output: [1, 3, 5, 7, 9]
+```
+
+### Explanation
+
+1. **Function Definition**
+
+   ```javascript
+   /**
+    * Generates an array of numbers in a specified range.
+    *
+    * @param {number} start - The starting value of the range (inclusive).
+    * @param {number} stop - The ending value of the range (exclusive).
+    * @param {number} step - The step value between each number in the range.
+    * @returns {number[]} An array containing the numbers from start to stop, incremented by step.
+    */
+   const range = (start, stop, step) =>
+     Array.from(
+       { length: Math.ceil((stop - start) / step) }, // Determine the length of the array
+       (_, index) => start + index * step // Compute each value based on start, step, and index
+     );
+   ```
+
+   - **`start`**: The beginning of the range (inclusive).
+   - **`stop`**: The end of the range (exclusive).
+   - **`step`**: The interval between each number in the sequence.
+   - **`Array.from()`**: Converts an object into an array. The object has a `length` property that determines the number of elements.
+   - **`Math.ceil((stop - start) / step)`**: Calculates the number of elements needed in the array.
+   - **`(_, index) => start + index * step`**: Computes each element in the array based on its index.
+
+2. **Example Usage**
+
+   ```javascript
+   console.log("Range from 4 to 10 with step 1:");
+   console.log(range(4, 10, 1));
+   // Output: [4, 5, 6, 7, 8, 9]
+
+   console.log("Range from 1 to 10 with step 2:");
+   console.log(range(1, 10, 2));
+   // Output: [1, 3, 5, 7, 9]
+   ```
+
+   - **`range(4, 10, 1)`**: Generates an array starting at 4, ending before 10, with a step of 1.
+   - **`range(1, 10, 2)`**: Generates an array starting at 1, ending before 10, with a step of 2.
+
+### Summary
+
+This professional version provides a clear and documented function for generating ranges of numbers. It uses `Array.from()` with a computed length and a mapping function to create an array with the specified range and step values.
