@@ -826,3 +826,92 @@ Providing 50 examples would be quite extensive for a single interaction. Instead
 These examples demonstrate
 
 various ways `Map` and `Set` can be used in JavaScript, from simple key-value storage and unique value collections to more advanced operations like filtering, counting, and managing complex data structures.
+
+Certainly! Here’s the explanation for each line of code, with comments directly above each line and additional information on the purpose of each loop:
+
+```javascript
+// Create a new Map instance to store fruit names and their colors
+const fruits = new Map();
+
+// Add key-value pairs to the map
+fruits.set("apple", "red"); // The key "apple" is associated with the value "red"
+fruits.set("banana", "yellow"); // The key "banana" is associated with the value "yellow"
+fruits.set("orange", "orange"); // The key "orange" is associated with the value "orange"
+fruits.set("grape", "purple"); // The key "grape" is associated with the value "purple"
+fruits.set("mango", "yellow"); // The key "mango" is associated with the value "yellow"
+
+// Output the entire map
+console.log(fruits);
+// Output: Map { 'apple' => 'red', 'banana' => 'yellow', 'orange' => 'orange', 'grape' => 'purple', 'mango' => 'yellow' }
+
+// Iterate over the keys of the map
+for (const key of fruits.keys()) {
+  console.log(key);
+}
+// Output: apple
+//         banana
+//         orange
+//         grape
+//         mango
+// This loop iterates through the keys of the map and logs each key to the console.
+
+// Iterate over the values of the map
+for (const value of fruits.values()) {
+  console.log(value);
+}
+// Output: red
+//         yellow
+//         orange
+//         purple
+//         yellow
+// This loop iterates through the values of the map and logs each value to the console.
+
+// Iterate over the map with key-value pairs
+for (const [key, value] of fruits) {
+  console.log(key, value);
+}
+// Output: apple red
+//         banana yellow
+//         orange orange
+//         grape purple
+//         mango yellow
+// This loop iterates through the map entries (key-value pairs) and logs each pair to the console.
+
+// Iterate over the map with forEach()
+fruits.forEach((value, key) => {
+  console.log(key, value);
+});
+// Output: apple red
+//         banana yellow
+//         orange orange
+//         grape purple
+//         mango yellow
+// This method iterates through each entry in the map and executes the provided callback function, logging each key-value pair to the console.
+```
+
+### Explanation of Loops
+
+1. **Iterating Over Keys (`for...of` with `keys()`):**
+
+   - The `keys()` method returns an iterator for the keys of the map.
+   - This loop logs each key in the map.
+   - Useful for when you need to work with the keys specifically, without concern for their associated values.
+
+2. **Iterating Over Values (`for...of` with `values()`):**
+
+   - The `values()` method returns an iterator for the values of the map.
+   - This loop logs each value in the map.
+   - Useful for when you only need the values and not the keys.
+
+3. **Iterating Over Entries (`for...of` with `Map` directly):**
+
+   - When you iterate over a map directly, it returns entries as `[key, value]` pairs.
+   - This loop logs both the key and the value together.
+   - Useful when you need to work with both keys and values simultaneously.
+
+4. **Using `forEach()`:**
+   - The `forEach()` method executes a provided function once for each map entry.
+   - It takes a callback function with parameters for the value and the key.
+   - This method provides a convenient way to perform operations on each key-value pair.
+
+Each method provides a different way to iterate over the elements of a `Map`, depending on what information you need and how you want to process it.
