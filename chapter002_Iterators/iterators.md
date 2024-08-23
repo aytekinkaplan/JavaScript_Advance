@@ -377,3 +377,96 @@ These examples illustrate different use cases of the `for...in` statement:
 10. Interaction with Symbol-keyed properties.
 
 Each example highlights specific behaviors and scenarios where `for...in` can be effectively used or where caution is needed.
+
+Sure, I'll explain the code line by line in English.
+
+### 1. Define an object `country`:
+
+```javascript
+const country = {
+  name: "USA",
+  capital: "Washington, D.C.",
+  language: "English",
+  population: 328_200_000,
+  neighbours: ["Canada", "Mexico"],
+  flag: "🇺🇸",
+  description: "A country in North America",
+```
+
+- Here, we are creating an object called `country` using the `const` keyword. This object represents a country and contains several properties: `name`, `capital`, `language`, `population`, `neighbours`, `flag`, and `description`.
+
+### 2. Define methods inside the object:
+
+```javascript
+  getPopulation() {
+    return `${this.name} has a population of ${this.population}`;
+  },
+```
+
+- `getPopulation`: This is a method (function) that returns a string. It uses the `name` and `population` properties of the `country` object. The `this` keyword refers to the current object, which is `country`.
+
+```javascript
+  getNeighbours() {
+    return `${this.name} has ${
+      this.neighbours.length
+    } neighbouring countries: ${this.neighbours.join(", ")}`;
+  },
+```
+
+- `getNeighbours`: This method returns a string indicating the number of neighboring countries and their names. It uses the `neighbours` property, calling `length` to get the count and `join(", ")` to list the names as a comma-separated string.
+
+```javascript
+  getFlag() {
+    return this.flag;
+  },
+```
+
+- `getFlag`: This method simply returns the `flag` property of the `country` object.
+
+```javascript
+  getDescription() {
+    return this.description;
+  },
+```
+
+- `getDescription`: This method returns the `description` property of the `country` object.
+
+```javascript
+  getDetails() {
+    return `${this.getPopulation()}, ${this.getNeighbours()}, ${this.getFlag()}, ${this.getDescription()}`;
+  },
+};
+```
+
+- `getDetails`: This method returns a string that combines the output of the `getPopulation`, `getNeighbours`, `getFlag`, and `getDescription` methods. It provides a detailed description of the country by calling other methods within the object.
+
+### 3. Calling the `getDetails` method:
+
+```javascript
+console.log(country.getDetails());
+```
+
+- This line of code calls the `getDetails` method of the `country` object and prints the output to the console.
+
+- **Expected Output**:  
+  `USA has a population of 328,200,000, USA has 2 neighbouring countries: Canada, Mexico, 🇺🇸, A country in North America`
+
+### 4. Using `for...in` to iterate over the object's properties:
+
+```javascript
+for (let property in country) {
+  console.log(`${property}: ${country[property]}`);
+}
+```
+
+- This loop iterates over all the enumerable properties of the `country` object. For each property, it prints the property name and its corresponding value.
+
+### 5. **Output of the `for...in` loop**:
+
+- The output will list all the properties of the `country` object, including both data properties (like `name`, `capital`, etc.) and methods (like `getPopulation`, `getNeighbours`, etc.). Each property name is printed, followed by its value.
+
+**Note**: Although it says that the `getDetails` method is not enumerable, in this context, all properties, including methods, are enumerable, which is why they are all listed by the `for...in` loop.
+
+### Final Thoughts:
+
+- The `for...in` loop is used here to dynamically access all properties of the `country` object. This includes methods, which are also treated as properties because functions are first-class citizens in JavaScript.
