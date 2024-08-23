@@ -470,3 +470,211 @@ for (let property in country) {
 ### Final Thoughts:
 
 - The `for...in` loop is used here to dynamically access all properties of the `country` object. This includes methods, which are also treated as properties because functions are first-class citizens in JavaScript.
+
+Sure, I'll provide a detailed explanation of the `for...of` statement along with 10 distinct examples, including their outputs.
+
+### Detailed Explanation of `for...of`
+
+The `for...of` statement is used to iterate over iterable objects. An iterable object is any object that has an `iterator` method, which returns an iterator. The `for...of` loop simplifies iteration by directly accessing the values of the iterable object.
+
+#### Characteristics:
+
+- **Iterates over values**: It directly iterates over the values of an iterable, unlike `for...in`, which iterates over the keys (or property names) of an object.
+- **Works with built-in iterables**: Includes built-in data structures like `Array`, `String`, `Map`, `Set`, `TypedArray`, and more.
+- **Custom iterables**: Can be used with user-defined objects that implement the iterable protocol.
+
+#### Syntax:
+
+```javascript
+for (const value of iterable) {
+  // code block to be executed
+}
+```
+
+### Examples with Outputs
+
+1. **Array Iteration**
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+for (const number of numbers) {
+  console.log(number);
+}
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+2. **String Iteration**
+
+```javascript
+const word = "hello";
+for (const char of word) {
+  console.log(char);
+}
+// Output:
+// h
+// e
+// l
+// l
+// o
+```
+
+3. **Set Iteration**
+
+```javascript
+const uniqueNumbers = new Set([1, 2, 3, 4, 5]);
+for (const number of uniqueNumbers) {
+  console.log(number);
+}
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+4. **Map Iteration (values only)**
+
+```javascript
+const map = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
+for (const value of map.values()) {
+  console.log(value);
+}
+// Output:
+// 1
+// 2
+// 3
+```
+
+5. **TypedArray Iteration**
+
+```javascript
+const typedArray = new Uint8Array([10, 20, 30, 40]);
+for (const value of typedArray) {
+  console.log(value);
+}
+// Output:
+// 10
+// 20
+// 30
+// 40
+```
+
+6. **Arguments Object in Functions**
+
+```javascript
+function printArgs() {
+  for (const arg of arguments) {
+    console.log(arg);
+  }
+}
+printArgs(1, 2, 3, 4);
+// Output:
+// 1
+// 2
+// 3
+// 4
+```
+
+7. **NodeList (from DOM queries)**
+
+```javascript
+const paragraphs = document.querySelectorAll("p");
+for (const paragraph of paragraphs) {
+  console.log(paragraph.textContent);
+}
+// Output: (depends on the content of the <p> elements in the document)
+// e.g.:
+// "First paragraph"
+// "Second paragraph"
+// "Third paragraph"
+```
+
+8. **Custom Iterable Object**
+
+```javascript
+class Range {
+  constructor(start, end) {
+    this.start = start;
+    this.end = end;
+  }
+
+  [Symbol.iterator]() {
+    let current = this.start;
+    let end = this.end;
+    return {
+      next() {
+        if (current <= end) {
+          return { value: current++, done: false };
+        } else {
+          return { done: true };
+        }
+      },
+    };
+  }
+}
+
+const range = new Range(1, 5);
+for (const num of range) {
+  console.log(num);
+}
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+9. **Array-like Object**
+
+```javascript
+function ArrayLikeObject() {
+  this.length = 3;
+  this[0] = "a";
+  this[1] = "b";
+  this[2] = "c";
+}
+ArrayLikeObject.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+
+const arrayLike = new ArrayLikeObject();
+for (const value of arrayLike) {
+  console.log(value);
+}
+// Output:
+// a
+// b
+// c
+```
+
+10. **String Iterator with `for...of`**
+
+```javascript
+const text = "example";
+const iterator = text[Symbol.iterator]();
+
+for (const char of iterator) {
+  console.log(char);
+}
+// Output:
+// e
+// x
+// a
+// m
+// p
+// l
+// e
+```
+
+### Summary
+
+The `for...of` statement is a versatile tool for iterating over various iterable objects, allowing you to work directly with values. It's ideal for arrays, strings, sets, maps, and custom objects that implement the iterable protocol.
