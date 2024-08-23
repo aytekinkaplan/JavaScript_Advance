@@ -915,3 +915,87 @@ fruits.forEach((value, key) => {
    - This method provides a convenient way to perform operations on each key-value pair.
 
 Each method provides a different way to iterate over the elements of a `Map`, depending on what information you need and how you want to process it.
+
+Certainly! Here’s the explanation of each line of code, with comments directly above each code line:
+
+```javascript
+// Array of words to be cleaned and processed
+const arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+// Function to clean and return unique anagrams from the array
+function cleanArray(arr) {
+  // Create a new Map instance to store normalized keys and their corresponding original values
+  let map = new Map();
+
+  // Iterate over each word in the array
+  for (let value of arr) {
+    // Normalize the word by converting to lowercase, sorting characters, and joining them back together
+    let key = value.toLowerCase().split("").sort().join("");
+    // Use the normalized key to store the original word in the map
+    map.set(key, value);
+  }
+
+  // Return an array of unique values by converting map values to an array
+  return Array.from(map.values());
+}
+
+// Output the result of the cleanArray function
+console.log(cleanArray(arr));
+// Output: [ 'nap', 'teachers', 'hectares' ]
+```
+
+### Explanation of Code
+
+1. **Array Initialization:**
+
+   ```javascript
+   const arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+   ```
+
+   - Initializes an array of words that may contain anagrams and duplicates.
+
+2. **Function Definition (`cleanArray`):**
+
+   ```javascript
+   function cleanArray(arr) {
+     let map = new Map();
+   ```
+
+   - Defines a function `cleanArray` that takes an array as an argument.
+   - Initializes an empty `Map` called `map` to store unique anagrams.
+
+3. **Processing Each Word:**
+
+   ```javascript
+   for (let value of arr) {
+     let key = value.toLowerCase().split("").sort().join("");
+     map.set(key, value);
+   }
+   ```
+
+   - Iterates over each word (`value`) in the input array.
+   - Converts the word to lowercase to ensure case insensitivity.
+   - Splits the word into an array of characters, sorts the characters, and then joins them back into a string. This creates a normalized key that is the same for anagrams.
+   - Uses this normalized key to store the original word in the `Map`. If the key already exists, the new value will overwrite the old one, ensuring only one unique word per key.
+
+4. **Returning Unique Values:**
+
+   ```javascript
+   return Array.from(map.values());
+   ```
+
+   - Converts the values of the `Map` into an array and returns it.
+   - This array contains only unique words, as duplicate anagrams have been removed.
+
+5. **Output the Result:**
+
+   ```javascript
+   console.log(cleanArray(arr));
+   ```
+
+   - Calls the `cleanArray` function with the input array and logs the result.
+   - The output is an array of unique words, each representing a different group of anagrams.
+
+**Output Explanation:**
+
+- The function `cleanArray` effectively filters out duplicates by using normalized keys for anagrams. Words like "nap" and "PAN" which are anagrams of each other result in a single unique word in the final output. The same applies to other anagrams such as "ear" and "era", and "teachers" and "cheaters".
