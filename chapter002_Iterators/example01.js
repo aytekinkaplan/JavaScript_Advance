@@ -1,22 +1,16 @@
-let map = new Map();
-map.set("color", "blue");
-map.set("size", "medium");
+// Iterators
 
-console.log(map); // Output: Map { "color" => "blue", "size" => "medium" }
+// Define an iterable object
+const iterable = [1, 2, 3, 4, 5];
 
-console.log(map.get("color")); // Output: blue
+// Create an iterator
+const iterator = iterable[Symbol.iterator]();
 
-console.log(map.get("size")); // Output: "medium"
+console.log(iterator);
 
-console.log(map.size); // Output: 2
-
-console.log(map.has("color")); // Output: true
-
-console.log(map.has("size")); // Output: true
-
-map.delete("color");
-console.log(map.has("color")); // Output: false
-
-console.log(map.size); // Output: 1
-
-console.log(map); // Output: Map { "size" => "medium" }
+// Get elements from the iterator
+let result = iterator.next();
+while (!result.done) {
+    console.log(result.value); // Print the current value
+    result = iterator.next(); // Get the next element
+}
