@@ -1090,3 +1090,113 @@ Here’s a table that outlines the differences between `Set` and `Object`, as we
 - **Unique Values:** The main feature of a `Set` is that repeated calls to `set.add(value)` with the same value will have no effect. This ensures that each value appears only once in the set.
 
 This table summarizes the primary differences between `Set` and `Object`, and provides detailed information on the methods available in a `Set`, including their descriptions and examples.
+
+Sure, here's an explanation of each part of your code:
+
+### Set Examples
+
+1. **Creating a Set and Adding Values**
+
+   ```javascript
+   const mySet = new Set();
+   mySet.add(1);
+   mySet.add(2);
+   mySet.add(2); // Duplicate, will not be added
+   console.log(mySet); // Output: Set { 1, 2 }
+   ```
+
+   - A `Set` is created and values are added to it.
+   - Duplicate values are ignored, so adding `2` again does not change the set.
+
+2. **Checking if a Value Exists in a Set**
+
+   ```javascript
+   console.log(mySet.has(1)); // Output: true
+   console.log(mySet.has(3)); // Output: false
+   ```
+
+   - `has()` method checks if the value `1` is in the set (returns `true`), and if `3` is in the set (returns `false`).
+
+3. **Deleting a Value from a Set**
+
+   ```javascript
+   mySet.delete(1);
+   console.log(mySet.has(1)); // Output: false
+   ```
+
+   - `delete()` removes the value `1` from the set.
+   - After deletion, checking for `1` returns `false`.
+
+4. **Iterating Over a Set**
+
+   ```javascript
+   mySet.add("a");
+   mySet.add("b");
+
+   for (let value of mySet) {
+     console.log(value);
+   }
+   // Output:
+   // 2
+   // a
+   // b
+   ```
+
+   - Adds two new values, `"a"` and `"b"`, to the set.
+   - Uses a `for...of` loop to iterate over and print each value in the set.
+
+5. **Converting a Set to an Array**
+
+   ```javascript
+   let arrayFromSet = Array.from(mySet);
+   console.log(arrayFromSet); // Output: [2, 'a', 'b']
+   ```
+
+   - `Array.from()` converts the set to an array.
+
+6. **Getting the Size of a Set**
+
+   ```javascript
+   console.log(mySet.size); // Output: 3
+   ```
+
+   - `size` property returns the number of elements in the set.
+
+7. **Clearing a Set**
+
+   ```javascript
+   mySet.clear();
+   console.log(mySet); // Output: Set {}
+   ```
+
+   - `clear()` removes all elements from the set.
+
+8. **Checking if a Set is Empty**
+   ```javascript
+   console.log(mySet.size === 0); // Output: true
+   ```
+   - Checks if the size of the set is `0`, meaning it is empty.
+
+### Working with Sets of Objects
+
+1. **Creating a Set of State Objects**
+
+   ```javascript
+   const us_states = new Set();
+
+   us_states.add({ AL: "Alabama" });
+   us_states.add({ AK: "Alaska" });
+   // ... add all states
+   console.log(us_states);
+   // Output: Set { {AL: 'Alabama'}, {AK: 'Alaska'}, {AZ: 'Arizona'}, ... }
+   ```
+
+   - Creates a set `us_states` and adds objects representing U.S. states.
+
+2. **Iterating Over a Set of Objects**
+   ```javascript
+   for (let state of us_states) console.log(state);
+   ```
+   - Iterates over each object in the `us_states` set and prints it.
+
+Keep in mind that each object in the set is a distinct reference, so even if two objects have the same properties, they are considered different unless they are the exact same reference.
