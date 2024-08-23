@@ -184,3 +184,46 @@ In this code, we create a `Map` with four entries. Each entry consists of a stud
   ```
 
 In this example, we’ve demonstrated how to create a `Map`, add data, and use various `Map` methods to interact with it.
+
+Certainly! Here is the explanation for each line of code, with comments directly above each code line:
+
+```javascript
+// Create a new Map instance
+let map = new Map();
+
+// Add key-value pairs to the map
+map.set("color", "blue"); // The key "color" is associated with the value "blue"
+map.set("size", "medium"); // The key "size" is associated with the value "medium"
+
+// Output the entire map
+console.log(map); // Output: Map { "color" => "blue", "size" => "medium" }
+
+// Retrieve and output the value associated with the key "color"
+console.log(map.get("color")); // Output: blue
+
+// Retrieve and output the value associated with the key "size"
+console.log(map.get("size")); // Output: medium
+
+// Output the number of key-value pairs in the map
+console.log(map.size); // Output: 2
+
+// Check if the map contains the key "color" and output the result
+console.log(map.has("color")); // Output: true
+
+// Check if the map contains the key "size" and output the result
+console.log(map.has("size")); // Output: true
+
+// Remove the key-value pair with the key "color"
+map.delete("color");
+
+// Check if the map contains the key "color" after deletion and output the result
+console.log(map.has("color")); // Output: false
+
+// Output the number of key-value pairs in the map after deletion
+console.log(map.size); // Output: 1
+
+// Output the entire map after deletion
+console.log(map); // Output: Map { "size" => "medium" }
+```
+
+This code demonstrates how to create a `Map`, add and retrieve data, check for the existence of keys, and delete entries. The map starts with two entries and then has one entry removed, which is reflected in the subsequent outputs.
