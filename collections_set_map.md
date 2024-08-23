@@ -1358,3 +1358,53 @@ console.log(getMetadata(divElement)); // Output: { role: 'admin', theme: 'dark' 
 - **Automatic Cleanup**: If `divElement` is removed from the DOM and no other references to it exist, the metadata entry will be automatically removed by the garbage collector.
 
 These examples demonstrate how `WeakMap` can be effectively used in various scenarios to manage memory efficiently and prevent memory leaks, which is especially useful in large-scale, long-running web applications.
+
+### WeakSet in JavaScript
+
+A `WeakSet` is a special type of collection that only holds objects and references them weakly. This means that if an object in a `WeakSet` is not referenced anywhere else, it can be garbage collected. This feature makes `WeakSet` useful in scenarios where you want to keep track of objects without preventing them from being garbage collected.
+
+#### Key Characteristics of WeakSet
+
+1. **Object-Only Storage**: Unlike `Set`, which can store any type of value, a `WeakSet` can only store objects. It cannot contain primitive values like numbers or strings.
+2. **No Size Property**: `WeakSet` does not have a `size` property to determine the number of elements, because elements can be garbage collected, making the count unreliable.
+3. **Not Iterable**: `WeakSet` is not iterable, meaning you cannot use methods like `forEach`, or directly loop over it with `for...of`.
+4. **Garbage Collection**: Objects in a `WeakSet` are held weakly, meaning if there are no other references to the object, it can be garbage collected. This property prevents memory leaks, as objects can be freed automatically.
+
+#### Methods of WeakSet
+
+Here is a summary of the methods provided by `WeakSet`:
+
+| Method                    | Description                                                                                                              |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `new WeakSet([iterable])` | Creates a new `WeakSet` object. If an iterable (like an array) is provided, each object in it is added to the `WeakSet`. |
+| `wset.add(anObj)`         | Adds a new object `anObj` to the `WeakSet`. If `anObj` already exists in the `WeakSet`, it is not added again.           |
+| `wset.delete(anObj)`      | Removes the object `anObj` from the `WeakSet`. Returns `true` if the object was found and removed, `false` otherwise.    |
+| `wset.has(anObj)`         | Checks if the object `anObj` is in the `WeakSet`. Returns `true` if it exists, `false` otherwise.                        |
+
+#### Differences between Set and WeakSet
+
+1. **Value Type**: `Set` can store any type of value (primitive values and objects), while `WeakSet` only stores objects.
+2. **Properties and Methods**: `Set` has a `size` property and methods like `clear()`, `keys()`, `values()`, `entries()`, and is iterable. `WeakSet` lacks these due to the weak reference nature of its elements.
+3. **Garbage Collection**: In a `WeakSet`, if there is no other reference to an object, it can be garbage collected, whereas in a `Set`, objects are strongly referenced and need to be manually deleted.
+
+### Usage Example
+
+```javascript
+let weakSet = new WeakSet();
+
+let obj1 = { name: "John" };
+let obj2 = { name: "Doe" };
+
+weakSet.add(obj1);
+weakSet.add(obj2);
+
+console.log(weakSet.has(obj1)); // true
+console.log(weakSet.has({})); // false, because this is a different object
+
+weakSet.delete(obj2);
+console.log(weakSet.has(obj2)); // false
+
+obj1 = null; // Now obj1 can be garbage collected, no longer has references.
+```
+
+This example demonstrates how a `WeakSet` manages object references and provides methods to check and manipulate them. Since `WeakSet` holds objects weakly, setting `obj1` to `null` allows it to be garbage collected if no other reference exists, showcasing the memory management benefits of `WeakSet`.
