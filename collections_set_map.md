@@ -1200,3 +1200,161 @@ Sure, here's an explanation of each part of your code:
    - Iterates over each object in the `us_states` set and prints it.
 
 Keep in mind that each object in the set is a distinct reference, so even if two objects have the same properties, they are considered different unless they are the exact same reference.
+
+## WeakMap
+
+### 1. Table: WeakMap vs Map
+
+| Feature               | WeakMap                                  | Map                                            |
+| --------------------- | ---------------------------------------- | ---------------------------------------------- |
+| **Key Type**          | Objects only                             | Any value (object, string, etc.)               |
+| **Key Reference**     | Weak (can be garbage collected)          | Strong (cannot be garbage collected)           |
+| **Access to Keys**    | No, only via `get()` and `has()` methods | Yes, can be iterated (e.g., forEach, for...of) |
+| **Size Information**  | No, cannot retrieve size                 | Yes, using the `size` property                 |
+| **Memory Management** | Prevents memory leaks, memory efficient  | May lead to memory leaks if not managed        |
+
+### 2. Diagram: Usage of WeakMap
+
+The following diagram illustrates how keys in a WeakMap are referenced and how it optimizes memory management.
+
+```
+                WeakMap
+           +------------------+
+           |                  |
+Button1 -->| Key1 --> Value1  |
+           |                  |
+Button2 -->| Key2 --> Value2  |
+           |                  |
+           +------------------+
+                 |
+                 v
+  (If references to Button1 and Button2 are removed elsewhere)
+                 |
+                 v
+   They are cleaned up by Garbage Collection
+```
+
+### Explanation:
+
+- **WeakMap**: It only accepts object keys. In the example above, `Button1` and `Button2` are object references.
+- **Memory Management**: If references to `Button1` and `Button2` are removed from elsewhere, JavaScript's Garbage Collector can automatically remove these objects and their associated entries in the WeakMap from memory. This helps prevent memory leaks and makes the application's memory usage more efficient.
+
+### Use Cases:
+
+1. **Storing Additional Data**: When you need to store extra data on an object (e.g., the number of times a button has been clicked) without modifying the object itself, you can use a WeakMap. For instance, to track how many times different buttons have been clicked.
+2. **Preventing Memory Leaks**: WeakMap helps prevent memory leaks by holding weak references to objects, making it critical for long-running applications where memory management is essential.
+
+This table and diagram help illustrate how WeakMap differs from a regular Map and how it optimizes memory management effectively.
+
+Here are some practical examples to illustrate the usage of `WeakMap`:
+
+### Example 1: Tracking User Interactions
+
+Imagine we want to track how many times a user clicks different buttons on a webpage without modifying the button objects directly.
+
+```javascript
+// Create a WeakMap to track button clicks
+const buttonClickCount = new WeakMap();
+
+// Function to register a click
+function registerClick(button) {
+  // Check if the button is already in the WeakMap
+  if (!buttonClickCount.has(button)) {
+    // If not, initialize the count to 0
+    buttonClickCount.set(button, 0);
+  }
+  // Increment the click count for the button
+  buttonClickCount.set(button, buttonClickCount.get(button) + 1);
+  console.log(`Button clicked ${buttonClickCount.get(button)} times`);
+}
+
+// Example usage
+const button1 = document.createElement("button");
+const button2 = document.createElement("button");
+
+// Simulate button clicks
+registerClick(button1); // Output: Button clicked 1 times
+registerClick(button1); // Output: Button clicked 2 times
+registerClick(button2); // Output: Button clicked 1 times
+
+// If button1 is removed and no references exist, it can be garbage collected
+```
+
+### Explanation:
+
+- **WeakMap for Click Count**: Here, `buttonClickCount` is a `WeakMap` where the keys are the button objects, and the values are the number of times each button has been clicked.
+- **Garbage Collection**: If the button element is no longer referenced anywhere else in the code, it will be eligible for garbage collection, and the entry in the `WeakMap` will automatically be removed, preventing memory leaks.
+
+### Example 2: Caching Expensive Computations
+
+Imagine a scenario where we want to cache the result of an expensive computation for certain objects without risking memory leaks.
+
+```javascript
+// WeakMap to store computed values
+const computationCache = new WeakMap();
+
+// Expensive computation function
+function expensiveComputation(obj) {
+  if (computationCache.has(obj)) {
+    // Return cached result if available
+    return computationCache.get(obj);
+  }
+
+  // Perform the expensive computation
+  const result = obj.value * 10; // Example computation
+
+  // Store the result in the WeakMap
+  computationCache.set(obj, result);
+
+  return result;
+}
+
+// Example usage
+const data1 = { value: 5 };
+const data2 = { value: 10 };
+
+console.log(expensiveComputation(data1)); // Output: 50
+console.log(expensiveComputation(data1)); // Output: 50 (from cache)
+console.log(expensiveComputation(data2)); // Output: 100
+
+// If data1 is no longer referenced elsewhere, it can be garbage collected
+```
+
+### Explanation:
+
+- **WeakMap for Caching**: In this example, `computationCache` is a `WeakMap` used to store results of expensive computations. If the `obj` (key) is no longer referenced elsewhere, the cached result is automatically removed.
+- **Memory Efficiency**: This method of caching ensures that memory is not unnecessarily consumed by objects that are no longer needed, thus preventing memory leaks.
+
+### Example 3: Storing Metadata for DOM Elements
+
+In web development, you might want to store metadata related to specific DOM elements without modifying the elements themselves.
+
+```javascript
+// Create a WeakMap to store metadata
+const elementMetadata = new WeakMap();
+
+// Function to add metadata to an element
+function setMetadata(element, metadata) {
+  elementMetadata.set(element, metadata);
+}
+
+// Function to get metadata from an element
+function getMetadata(element) {
+  return elementMetadata.get(element);
+}
+
+// Example usage
+const divElement = document.createElement("div");
+setMetadata(divElement, { role: "admin", theme: "dark" });
+
+console.log(getMetadata(divElement)); // Output: { role: 'admin', theme: 'dark' }
+
+// If divElement is removed from DOM and no references exist, metadata is garbage collected
+```
+
+### Explanation:
+
+- **WeakMap for Metadata**: The `elementMetadata` WeakMap stores metadata for specific DOM elements. This allows storing information like user roles, theme preferences, etc., without modifying the actual element or creating potential memory issues.
+- **Automatic Cleanup**: If `divElement` is removed from the DOM and no other references to it exist, the metadata entry will be automatically removed by the garbage collector.
+
+These examples demonstrate how `WeakMap` can be effectively used in various scenarios to manage memory efficiently and prevent memory leaks, which is especially useful in large-scale, long-running web applications.
