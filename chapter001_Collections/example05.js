@@ -12,3 +12,5 @@ function cleanArray(arr) {
 }
 
 console.log(cleanArray(arr));
+
+// Output: [ 'PAN', 'hectares', 'era' ]

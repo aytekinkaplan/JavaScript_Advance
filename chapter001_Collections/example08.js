@@ -55,13 +55,6 @@ console.log(us_states);
 
 // Output: Set { {AL: 'Alabama'}, {AK: 'Alaska'}, {AZ: 'Arizona'}, ... }
 
-// Iteration over Sets
-for (let state of us_states) {
-    console.log(state);
-}
-// Output: {AL: 'Alabama'}
-// {AK: 'Alaska'}
-// {AZ: 'Arizona'}
-// {...}
+for (let state of us_states) console.log(state);
 
 

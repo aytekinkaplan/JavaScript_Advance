@@ -1,16 +1,41 @@
-const arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// Set Examples
+const mySet = new Set();
+mySet.add(1);
+mySet.add(2);
+mySet.add(2); // Duplicate, will not be added
+console.log(mySet); // Output: Set { 1, 2 }
 
-function cleanArray(arr) {
-  let map = new Map();
+// Check if Value Exists
+console.log(mySet.has(1)); // Output: true
+console.log(mySet.has(3)); // Output: false
 
-  for (let value of arr) {
-    let key = value.toLowerCase().split("").sort().join("");
-    map.set(key, value);
-  }
+// Delete a Value
+mySet.delete(1);
+console.log(mySet.has(1)); // Output: false
 
-  return Array.from(map.values());
+// Iterate Over a Set
+mySet.add("a");
+mySet.add("b");
+
+for (let value of mySet) {
+    console.log(value);
 }
+// Output:
+// 2
+// a
+// b
 
-console.log(cleanArray(arr));
+// Convert Set to Array
+let arrayFromSet = Array.from(mySet);
+console.log(arrayFromSet); // Output: [2, 'a', 'b']
 
-// Output: [ 'PAN', 'hectares', 'era' ]
+// Get Set Size
+console.log(mySet.size); // Output: 3
+
+// Clear a Set
+mySet.clear();
+console.log(mySet); // Output: Set {}
+
+// Check if Set is empty
+console.log(mySet.size === 0); // Output: true
+
