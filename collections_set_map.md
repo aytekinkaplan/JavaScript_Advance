@@ -995,3 +995,56 @@ console.log(cleanArray(arr));
 **Output Explanation:**
 
 - The function `cleanArray` effectively filters out duplicates by using normalized keys for anagrams. Words like "nap" and "PAN" which are anagrams of each other result in a single unique word in the final output. The same applies to other anagrams such as "ear" and "era", and "teachers" and "cheaters".
+
+##Set
+A Set is a specialized type of collection used to store unique values. This means that each value in the Set can appear only once, making it particularly useful for ensuring that no duplicates are present in the collection.
+
+Unlike a Map, which stores data in key/value pairs, a Set is more similar to an Array in that it contains a list of values. However, while Arrays are indexed and can contain duplicate values, Sets do not use indexes and automatically prevent duplicates. This makes Sets an effective tool for managing collections where uniqueness is a key requirement.
+
+One important feature of Sets in ES6 (ECMAScript 2015) is that they maintain the order of elements. This means that when you iterate over a Set, the values are returned in the order in which they were added. This is different from some other programming languages, where Sets may not preserve the order of elements.
+
+In summary, Sets offer a way to work with collections of values where uniqueness is essential, and they provide ordered storage and retrieval of elements in ES6, setting them apart from similar constructs in other languages.
+
+Sure, here are the explanations with examples for each use case:
+
+1. **Use when you need to work with unique values**:
+
+   - **Explanation**: Sets are designed to store only unique values. This makes them particularly useful when you need to ensure that no duplicates are present in your collection.
+   - **Example**:
+
+     ```javascript
+     const uniqueValues = new Set();
+     uniqueValues.add(1);
+     uniqueValues.add(2);
+     uniqueValues.add(2); // This will not be added, as 2 is already in the Set
+
+     console.log(uniqueValues); // Output: Set { 1, 2 }
+     ```
+
+2. **Use when high-performance is really important**:
+
+   - **Explanation**: Sets provide efficient performance for operations such as checking for the existence of an element, adding new elements, or removing elements. This efficiency is due to their underlying hash-based structure, which generally offers faster operations compared to arrays, especially as the size of the data grows.
+   - **Example**:
+
+     ```javascript
+     const largeSet = new Set();
+     for (let i = 0; i < 1000000; i++) {
+       largeSet.add(i);
+     }
+
+     console.time("has");
+     console.log(largeSet.has(999999)); // Checks if the element exists
+     console.timeEnd("has"); // Output will show the time taken for the check
+     ```
+
+3. **Use to remove duplicates from arrays**:
+
+   - **Explanation**: If you have an array with duplicate values and you want to create a new array with only the unique values, you can use a Set. Converting an array to a Set automatically removes duplicates, and you can then convert the Set back to an array if needed.
+   - **Example**:
+
+     ```javascript
+     const arrayWithDuplicates = [1, 2, 2, 3, 4, 4, 5];
+     const uniqueArray = [...new Set(arrayWithDuplicates)];
+
+     console.log(uniqueArray); // Output: [1, 2, 3, 4, 5]
+     ```
