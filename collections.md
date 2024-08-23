@@ -90,3 +90,97 @@ Here’s a table summarizing the methods of the `Map` object along with examples
      console.log(`${key}: ${value}`);
    }
    ```
+
+   Sure! Here’s a more detailed and high-quality example, with explanations:
+
+### Example: Student Grades Map
+
+In this example, we’ll use a `Map` to store student names as keys and their grades as values. We’ll also demonstrate some `Map` methods.
+
+#### 1. Creating a Map and Adding Data
+
+First, we create a `Map` with student names and their corresponding grades:
+
+```javascript
+const studentGrades = new Map([
+  ["Alice", 85],
+  ["Bob", 92],
+  ["Charlie", 78],
+  ["Diana", 89],
+]);
+```
+
+In this code, we create a `Map` with four entries. Each entry consists of a student’s name as the key and their grade as the value.
+
+#### 2. Using Map Methods
+
+- **`size` Property:**
+
+  To get the number of students, use the `size` property:
+
+  ```javascript
+  console.log(studentGrades.size); // 4
+  ```
+
+- **`get()` Method:**
+
+  To retrieve the grade of a specific student, use the `get()` method:
+
+  ```javascript
+  console.log(studentGrades.get("Bob")); // 92
+  ```
+
+- **`has()` Method:**
+
+  To check if a student is in the map, use the `has()` method:
+
+  ```javascript
+  console.log(studentGrades.has("Charlie")); // true
+  console.log(studentGrades.has("Eve")); // false
+  ```
+
+- **`delete()` Method:**
+
+  To remove a student from the map, use the `delete()` method:
+
+  ```javascript
+  studentGrades.delete("Charlie");
+  console.log(studentGrades.has("Charlie")); // false
+  ```
+
+- **`clear()` Method:**
+
+  To remove all students from the map, use the `clear()` method:
+
+  ```javascript
+  studentGrades.clear();
+  console.log(studentGrades.size); // 0
+  ```
+
+- **Iterating Over the Map:**
+
+  You can loop through the entries, keys, or values of the map:
+
+  ```javascript
+  // Iterate over entries
+  for (let [name, grade] of studentGrades.entries()) {
+    console.log(`${name}: ${grade}`);
+  }
+
+  // Iterate over keys
+  for (let name of studentGrades.keys()) {
+    console.log(name);
+  }
+
+  // Iterate over values
+  for (let grade of studentGrades.values()) {
+    console.log(grade);
+  }
+
+  // Using forEach
+  studentGrades.forEach((grade, name) => {
+    console.log(`${name}: ${grade}`);
+  });
+  ```
+
+In this example, we’ve demonstrated how to create a `Map`, add data, and use various `Map` methods to interact with it.
