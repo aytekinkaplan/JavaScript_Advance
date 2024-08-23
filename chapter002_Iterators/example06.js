@@ -12,3 +12,5 @@ console.log(newArray2);
 
 const newArray3 = Array.from(iterable, (value) => value ** 2);
 console.log(newArray3);
+
+// Output: [1, 4, 9, 16, 25]
