@@ -1048,3 +1048,45 @@ Sure, here are the explanations with examples for each use case:
 
      console.log(uniqueArray); // Output: [1, 2, 3, 4, 5]
      ```
+
+Here’s a table that outlines the differences between `Set` and `Object`, as well as the methods of the `Set` object, with explanations:
+
+| **Feature**            | **Set**                                                   | **Object**                                                                     |
+| ---------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Key Types**          | Can use any type of values, including objects, as keys.   | Only strings and symbols can be used as keys.                                  |
+| **Key Uniqueness**     | Keys (values) are unique; duplicates are not allowed.     | Keys can be overwritten; duplicates are handled by the key itself.             |
+| **Convenient Methods** | Provides methods like `add()`, `delete()`, `has()`, etc.  | No built-in methods for direct manipulation; requires custom code.             |
+| **Size Property**      | Provides a `size` property to get the number of elements. | No direct property to get the number of keys; needs to be calculated manually. |
+
+### Performance
+
+| **Feature**            | **Set**                                                                                                                                                               | **Array**                                                                        |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **Check for Presence** | The `has()` method is generally faster for presence checks compared to `Array.prototype.includes()` when comparing to an array with a length equal to the set’s size. | `includes()` method may be slower for large arrays compared to `Set` operations. |
+
+### Set Methods
+
+| **Method**          | **Description**                                                                                                 | **Example**                         |
+| ------------------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `new Set(iterable)` | Creates a new `Set` instance. If an iterable object (like an array) is provided, it copies values into the set. | `const mySet = new Set([1, 2, 3]);` |
+| `set.add(value)`    | Adds a value to the set. Returns the set itself, allowing method chaining.                                      | `mySet.add(4);`                     |
+| `set.delete(value)` | Removes a value from the set. Returns `true` if the value was present, otherwise `false`.                       | `mySet.delete(3);`                  |
+| `set.has(value)`    | Checks if the set contains the specified value. Returns `true` if the value is present, otherwise `false`.      | `mySet.has(2);`                     |
+| `set.clear()`       | Removes all values from the set.                                                                                | `mySet.clear();`                    |
+| `set.size`          | Returns the number of values in the set.                                                                        | `console.log(mySet.size);`          |
+
+### Iterating Over a Set
+
+| **Method**          | **Description**                                                                                      | **Example**                                                             |
+| ------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `set.values()`      | Returns an iterable for the values in the set.                                                       | `for (const value of mySet.values()) { console.log(value); }`           |
+| `set.keys()`        | Alias for `set.values()`. Returns an iterable for the values, included for compatibility with `Map`. | `for (const key of mySet.keys()) { console.log(key); }`                 |
+| `set.entries()`     | Returns an iterable for `[value, value]` pairs. This is used by default in `for..of` loops.          | `for (const [value, value] of mySet.entries()) { console.log(value); }` |
+| `set.forEach()`     | Executes a provided function once for each value in the set.                                         | `mySet.forEach(value => { console.log(value); });`                      |
+| `for..of` Statement | Can be used to iterate over the set directly. This loops through each value in the set.              | `for (const value of mySet) { console.log(value); }`                    |
+
+### Unique Feature
+
+- **Unique Values:** The main feature of a `Set` is that repeated calls to `set.add(value)` with the same value will have no effect. This ensures that each value appears only once in the set.
+
+This table summarizes the primary differences between `Set` and `Object`, and provides detailed information on the methods available in a `Set`, including their descriptions and examples.
