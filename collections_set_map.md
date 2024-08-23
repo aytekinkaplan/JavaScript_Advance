@@ -916,8 +916,6 @@ fruits.forEach((value, key) => {
 
 Each method provides a different way to iterate over the elements of a `Map`, depending on what information you need and how you want to process it.
 
-Certainly! Here’s the explanation of each line of code, with comments directly above each code line:
-
 ```javascript
 // Array of words to be cleaned and processed
 const arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
