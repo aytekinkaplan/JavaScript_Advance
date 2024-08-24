@@ -1,61 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>JavaScript DOM</title>
-  </head>
-  <body>
-    <h1>JavaScript Plus - DOM</h1>
-    <p>JavaScript parentNode example</p>
-    <div id="main">
-      <p class="note">This is a note!</p>
-    </div>
-    <p>JavaScript Siblings example</p>
-    <ul id="menu">
-      <li>Home</li>
-      <li>Products</li>
-      <li class="current">Customer Support</li>
-      <li>Careers</li>
-      <li>Investors</li>
-      <li>News</li>
-      <li>About Us</li>
-    </ul>
-    <script>
-      // Getting the parent of the note element
-      let note = document.querySelector(".note");
-      console.log(note.parentNode); // Logs the parent element of 'note'
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>JavaScript Siblings</title>
+</head>
+<body>
+<ul id="menu">
+  <li>Home</li>
+  <li>Products</li>
+  <li class="current">Customer Support</li>
+  <li>Careers</li>
+  <li>Investors</li>
+  <li>News</li>
+  <li>About Us</li>
+</ul>
 
-      console.log("------");
-      console.log("to get next sibling");
-
-      // Getting the next sibling
-      let current = document.querySelector(".current");
-      let nextSibling = current.nextElementSibling;
-      console.log(nextSibling); // Logs the next sibling
-
-      console.log("------");
-      console.log("to get all next siblings");
-
-      // Looping through all next siblings
-      while (nextSibling) {
-        console.log(nextSibling); // Logs each next sibling
-        nextSibling = nextSibling.nextElementSibling;
+<script>
+  let getSiblings = function (e) {
+    // for collecting siblings
+    let siblings = [];
+    // if no parent, return no sibling
+    if (!e.parentNode) {
+      return siblings;
+    }
+    // first child of the parent node
+    let sibling = e.parentNode.firstElementChild;
+    // collecting siblings
+    while (sibling) {
+      if (sibling !== e) {
+        siblings.push(sibling);
       }
+      sibling = sibling.nextElementSibling;
+    }
+    return siblings;
+  };
 
-      console.log("------");
-      console.log("to get previous sibling");
-
-      // Getting the previous sibling
-      let prevSibling = current.previousElementSibling;
-      console.log(prevSibling); // Logs the previous sibling
-
-      console.log("------");
-      console.log("to get all previous siblings");
-
-      // Looping through all previous siblings
-      while (prevSibling) {
-        console.log(prevSibling); // Logs each previous sibling
-        prevSibling = prevSibling.previousElementSibling;
-      }
-    </script>
-  </body>
+  // Get all siblings of the element with the class 'current'
+  let siblings = getSiblings(document.querySelector('.current'));
+  let siblingText = siblings.map((e) => e.innerHTML); // Declare siblingText properly
+  console.log(siblingText); // Output: ["Home", "Products", "Careers", "Investors", "News", "About Us"]
+</script>
+</body>
 </html>
