@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 id="heading">JavaScript Plus - DOM</h1>
+      <h2 id="heading2"></h2>
+      <p id="message"></p>
+      <ul id="menu">
+        <li class="item">HTML</li>
+        <li class="item">CSS</li>
+        <li class="item highlight">JavaScript</li>
+        <li class="item">TypeScript</li>
+        <li class="item">React</li>
+        <li class="item">Angular</li>
+        <li class="item">Vue</li>
+        <li class="item">Svelte</li>
+        <li class="item">Ember</li>
+        <li class="item">Backbone</li>
+        <li class="item">Django</li>
+        <li class="item">Flask</li>
+        <li class="item">Laravel</li>
+        <li class="item">Ruby on Rails</li>
+        <li class="item">Node.js</li>
+        <li class="item">Express</li>
+        <li class="item">Spring</li>
+        <li class="item">Docker</li>
+        <li class="item">Kubernetes</li>
+        <li class="item">AWS</li>
+        <li class="item">Azure</li>
+        <li class="item">GCP</li>
+        <li class="item">Firebase</li>
+      </ul>
+    </div>
+    <script>
+      const app = document.getElementById("app");
+      app.style.backgroundColor = "blue";
+      app.style.color = "white";
+      app.style.padding = "10px";
+      app.style.border = "1px solid black";
+      app.style.borderRadius = "5px";
+      app.style.margin = "10px";
+      app.style.display = "flex";
+      app.style.flexDirection = "column";
+
+      const createdNewP = document.createElement("p");
+      createdNewP.textContent = "This is my new paragraph";
+      app.appendChild(createdNewP);
+
+      const createdNewH2 = document.createElement("h2");
+      createdNewH2.textContent = "This is my new heading";
+      app.appendChild(createdNewH2);
+
+      const createdNewH3 = document.createElement("h3");
+      createdNewH3.textContent = "This is my new heading 2";
+      app.appendChild(createdNewH3);
+
+      const createdNewDiv = document.createElement("div");
+      createdNewDiv.style.backgroundColor = "red";
+      createdNewDiv.style.color = "white";
+      createdNewDiv.style.padding = "10px";
+      createdNewDiv.style.border = "1px solid black";
+      createdNewDiv.style.borderRadius = "5px";
+      createdNewDiv.style.margin = "10px";
+      app.appendChild(createdNewDiv);
+
+      const createdNewUl = document.createElement("ul");
+      createdNewUl.style.backgroundColor = "green";
+      createdNewUl.style.color = "white";
+      createdNewUl.style.padding = "10px";
+      createdNewUl.style.border = "1px solid black";
+      createdNewUl.style.borderRadius = "5px";
+      createdNewUl.style.margin = "10px";
+      app.appendChild(createdNewUl);
+
+      const createdNewLi1 = document.createElement("li");
+      const createdNewLi2 = document.createElement("li");
+      createdNewLi1.textContent = "This is my new list item";
+      createdNewLi2.textContent = "This is my new list item 2";
+
+      for (let i = 0; i < 10; i++) {
+        const createdNewLi = document.createElement("li");
+        createdNewLi.textContent = `This is my new list item ${i + 1}`;
+        createdNewUl.appendChild(createdNewLi);
+      }
+
+      createdNewUl.appendChild(createdNewLi1);
+      createdNewUl.appendChild(createdNewLi2);
+      const heading = document.getElementById("heading");
+      const heading2 = document.getElementById("heading2");
+      const message = document.getElementById("message");
+
+      heading2.textContent = "This is my style";
+      heading2.textContent = "This is my new style";
+      message.textContent = "This is my message";
+
+      const now = new Date();
+      const currentTime = now.getHours();
+
+      if (currentTime < 12 && currentTime >= 6) {
+        heading.textContent = "Good Morning";
+      } else if (currentTime < 18 && currentTime >= 12) {
+        heading.textContent = "Good Afternoon";
+      } else if (currentTime < 24 && currentTime >= 18) {
+        heading.textContent = "Good Evening";
+      } else {
+        heading.textContent = "Good Night";
+      }
+
+      const menu = document.getElementById("menu");
+      const items = menu.getElementsByClassName("item");
+      const data1 = [].map.call(items, (item) => item.textContent);
+      console.log(data1);
+    </script>
+  </body>
+</html>
