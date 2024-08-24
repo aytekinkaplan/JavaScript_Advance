@@ -790,20 +790,41 @@ These methods are used to create new elements and add them to the DOM.
 - `document.createElement('li')` creates a new `<li>` element.
 - `list.appendChild(newItem)` adds this new item to the list.
 
-### Example 8: Removing Elements from the DOM
+### Example 8: Removing Elements from the DOM Using the `removeChild()` Method\*\*
 
-**Using `removeChild()` Method**
-
-The `removeChild()` method removes a child node from the DOM.
-
-**Example:**
+The `removeChild()` method removes a child node from the DOM. Here’s an example:
 
 ```html
-### Conclusion Each method serves a specific purpose and can be used based on
-the requirement of selecting elements by `id`, class, tag name, or name
-attribute. Understanding how these methods work allows for more effective DOM
-manipulation, enhancing the interactivity and user experience of web pages.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Remove Child Example</title>
+  </head>
+  <body>
+    <ul id="fruit-list">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Orange</li>
+    </ul>
+
+    <script>
+      const fruitList = document.getElementById("fruit-list");
+      const banana = fruitList.getElementsByTagName("li")[1];
+      fruitList.removeChild(banana); // This removes the 'Banana' item
+    </script>
+  </body>
+</html>
 ```
+
+In this example, the `removeChild()` method is used to remove the second list item (Banana) from the unordered list with the ID `fruit-list`.
+
+**Conclusion:**  
+Each method serves a specific purpose and can be used based on the requirement of selecting elements by `id`, class, tag name, or name attribute. Understanding how these methods work allows for more effective DOM manipulation, enhancing the interactivity and user experience of web pages.
+
+---
+
+This example demonstrates how to use `removeChild()` to remove a specific element from the DOM. Let me know if you need further modifications or have more questions!
 
 The `querySelector()` and `querySelectorAll()` methods are powerful tools in JavaScript for selecting DOM elements using CSS selectors. They allow developers to select elements in a more expressive and flexible way compared to traditional methods like `getElementById()` or `getElementsByClassName()`. Below, I'll provide a more detailed explanation, including examples of different types of selectors, combinators, and pseudo-classes.
 
