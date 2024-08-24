@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript DOM</title>
+  </head>
+  <body>
+    <div id="container">
+      <ul>
+        <li class="item">Python</li>
+        <li class="item">Java</li>
+        <li class="item">JavaScript</li>
+        <li class="item">C#</li>
+        <li class="item">C++</li>
+        <li class="item">PHP</li>
+        <li class="item">Ruby</li>
+        <li class="item">Swift</li>
+        <li class="item">Kotlin</li>
+        <li class="item">Go</li>
+        <li class="item">Rust</li>
+        <li class="item">Dart</li>
+        <li class="item">Scala</li>
+        <li class="item">C</li>
+        <li class="item">R</li>
+        <li class="item">Haskell</li>
+        <li class="item">F#</li>
+        <li class="item">Elixir</li>
+        <li class="item">Julia</li>
+        <li class="item">Clojure</li>
+        <li class="item">Perl</li>
+        <li class="item">Haskell</li>
+        <li class="item">Erlang</li>
+        <li class="item">Racket</li>
+        <li class="item">Elixir</li>
+        <li class="item">F#</li>
+        <li class="item">Clojure</li>
+      </ul>
+    </div>
+
+    <script>
+      const container = document.getElementById("container");
+      const items = document.getElementsByClassName("item");
+      for (item of items) {
+        console.log(item.textContent);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript DOM</title>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script>
+      const ul = document.createElement("ul");
+      const techList = [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Node",
+        "MongoDB",
+        "Python",
+        "Java",
+        "C#",
+        "C++",
+        "PHP",
+        "Ruby",
+        "Swift",
+        "Kotlin",
+        "Go",
+        "Rust",
+        "Dart",
+        "Scala",
+        "C",
+        "R",
+        "Haskell",
+        "F#",
+        "Elixir",
+        "Julia",
+        "Clojure",
+        "Perl",
+        "Haskell",
+        "Erlang",
+        "Racket",
+        "Elixir",
+        "F#",
+        "Clojure",
+      ];
+      for (etch of techList) {
+        const li = document.createElement("li");
+        li.textContent = etch;
+        ul.appendChild(li);
+        document.getElementById("container").appendChild(ul);
+      }
+    </script>
+  </body>
+</html>
