@@ -27,5 +27,5 @@ export const createHeader = (data) => {
 
 // export default createHeader;
 export const initHeader = () => {
-  document.body.appendChild(createHeader(data));
+  return createHeader(data);
 };

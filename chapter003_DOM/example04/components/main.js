@@ -1,6 +1,6 @@
 import { createCard } from "./card.js";
 
-export const menuBuilder = () => {
+export const mainBuilder = () => {
   fetch("./data/data.json")
     .then((response) => response.json())
     .then((data) => {
@@ -13,12 +13,14 @@ export const menuBuilder = () => {
         cardsContainer.appendChild(card);
       });
 
-      // Oluşturulan kartları menüye ekle
-      document.body.appendChild(cardsContainer);
+      // Oluşturulan kartları maine ekle
+      const main = document.createElement("main");
+      main.appendChild(cardsContainer);
+      document.body.appendChild(main);
     })
     .catch((error) => console.error("Error loading data:", error));
 };
 
 export const initMain = () => {
-  menuBuilder();
+  mainBuilder();
 };

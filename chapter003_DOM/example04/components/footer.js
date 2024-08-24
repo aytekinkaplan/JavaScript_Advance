@@ -27,5 +27,5 @@ export const createFooter = (socialLinks) => {
 };
 
 export const initFooter = () => {
-  document.body.appendChild(createFooter(socialLinks));
+  return createFooter(socialLinks);
 };
